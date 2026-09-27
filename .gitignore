@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+backend/.env
+*.db
+
+# Node / Expo
+node_modules/
+**/node_modules/
+mobile/node_modules/
+.expo/
+dist/
+web-build/
+mobile/.env
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
