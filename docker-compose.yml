@@ -1,0 +1,19 @@
+# Optional: run Postgres + API in containers. Local dev also works with SQLite and no Docker.
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: machinelend
+      POSTGRES_PASSWORD: machinelend
+      POSTGRES_DB: machinelend
+    ports: ["5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+  api:
+    build: ./backend
+    environment:
+      ML_DATABASE_URL: postgresql+psycopg://machinelend:machinelend@db:5432/machinelend
+      ML_JWT_SECRET: dev-secret-change-me
+    ports: ["8000:8000"]
+    depends_on: [db]
+volumes:
+  pgdata:
